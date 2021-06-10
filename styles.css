@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: black;
+    background-color: #010000;
     /* width: 100vw; */
 }
 
@@ -16,7 +16,7 @@ body {
 }
 
 .time {
-    color: white;
+    color: #fdfdfd;
     font-size: 45px;
     margin: 0 auto;
     text-align: center;
@@ -39,30 +39,46 @@ body {
     border: 2px solid black;
 }
 
-.left {
-    background-color: rgb(28,28,30);
-    box-shadow:  0 0 0 2px rgb(28,28,30);
-    color: rgb(154,153,160);
-    margin-left: 10px;
-}
-
-.right {
-    background-color: rgb(19,41,20);
-    box-shadow:  0 0 0 2px rgb(19,41,20);
-    color: rgb(105,207,105);
-    float: right;
-    margin-right: 10px;
-}
 .button:hover {
     cursor: pointer;
     opacity: 70%;  
+}
+
+.leftButton {
+    background-color: #333333;
+    box-shadow:  0 0 0 2px #333333;
+    color: #fefefe;
+    margin-left: 10px;
+}
+
+.rightButton {
+    float: right;
+    margin-right: 10px;
+}
+
+.start {
+    background-color: #132914;
+    box-shadow:  0 0 0 2px #132914;
+    color: #69cf69;
+}
+
+.stop {
+    background-color: #2f100d;
+    box-shadow:  0 0 0 2px #2f100d;
+    color: #e65444;
+}
+
+.disabled {
+    background-color: rgb(28,28,30);
+    box-shadow:  0 0 0 2px rgb(28,28,30);
+    color: rgb(154,153,160);
 }
 
 .log {
     margin-top: 25px;
 }
 
-.lap {
+.lapTime {
     width: 225px;
     height: 25px;
     border-top: 1px solid rgb(50,50,50);
