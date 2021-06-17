@@ -1,37 +1,42 @@
-import { getTime, calculateDiffernce, resetTimer } from './timer.js'
+import { getTimeStamp, runTimer, stopTimer, resetTimer } from './timer.js'
 
 const time = document.querySelector('.time')
 const lapResetButton = document.querySelector('.leftButton')
 const startStopButton = document.querySelector('.rightButton')
 
-let running = false
-let newSession = true
+let isRunning = false
+let isNewSession = true
 let numOfLaps = 0
 
+
+let timeStamp = {
+    startTime: 0, 
+    endTime : 0,
+    currentDuration: 0
+}
+
+
 const handleStartStopButton = () => {
-    getTime(running)
+    timeStamp = getTimeStamp(isRunning, timeStamp)
     
-    if(!running) {
-        if(newSession) {
+    if(!isRunning) {
+        if(isNewSession) {
             lapResetButton.classList.remove('disabled')
-            newSession = false
+            isNewSession = false
         }
-        changeToStop()
-        lapResetButton.innerHTML = 'Lap'
+        requestAnimationFrame(() => runTimer(timeStamp))
+        changeButtonToStop()
     }
     else {
-        changeToStart()
-        calculateDiffernce()
-        if(!running) {
-            lapResetButton.innerHTML = 'Reset'
-        }
+        changeButtonToStart()
+        stopTimer(timeStamp)
     }
 }
 
 const handleLapResetButton = () => {
-    if(!running) {
+    if(!isRunning) {
         console.log('reset pressed') 
-        resetTimer()
+        resetTimer(isNewSession, numOfLaps, timeStamp)
     }
     else {
         console.log('lap pressed')
@@ -40,18 +45,20 @@ const handleLapResetButton = () => {
     }
 }
 
-const changeToStop = () => {
-    running = true
+const changeButtonToStop = () => {
+    isRunning = true
     startStopButton.classList.remove('start')
     startStopButton.classList.add('stop')
     startStopButton.innerHTML = 'Stop'
+    lapResetButton.innerHTML = 'Lap'
 }
 
-const changeToStart = () => {
-    running = false
+const changeButtonToStart = () => {
+    isRunning = false
     startStopButton.classList.remove('stop')
     startStopButton.classList.add('start')
     startStopButton.innerHTML = 'Start'
+    lapResetButton.innerHTML = 'Reset'
 }
 
 startStopButton.addEventListener('click', handleStartStopButton)

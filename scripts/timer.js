@@ -1,20 +1,21 @@
-let startTime
-let endTime 
-let timeElapsed
+let animationId = 0
 
-export const getTime = (running) => {
-    running ? endTime = Date.now() : startTime = Date.now()
+export const getTimeStamp = (isWatchRunning, timeStamp) => {
+    isWatchRunning ? timeStamp.endTime = Date.now() : timeStamp.startTime = Date.now()
+    return timeStamp
 }
 
-export const calculateDiffernce = () => {
-    timeElapsed = formatTime(endTime - startTime)
-    console.log('timeElapsed', timeElapsed)
-    displayTime()
+export const runTimer = (timeStamp) => {
+    const time = document.querySelector('.time')    
+    let timeElapsed = (Date.now() - timeStamp.startTime) + timeStamp.currentDuration
+
+    time.innerHTML = formatTime(timeElapsed)
+    animationId = requestAnimationFrame(() => runTimer(timeStamp))
 }
 
-const displayTime = () => {
-    const time = document.querySelector('.time')
-    time.innerHTML = timeElapsed
+export const stopTimer = (timeStamp) => {
+    cancelAnimationFrame(animationId)
+    timeStamp.currentDuration = (timeStamp.endTime - timeStamp.startTime) + timeStamp.currentDuration
 }
 
 const formatTime = (timeInMilli) => {
@@ -28,26 +29,16 @@ const formatTime = (timeInMilli) => {
     return `${minutes}:${seconds}.${centiseconds}`
 }
 
-/* 
-const formatTime = (timeInMilli) => {
-    console.log('timeInMilli =', timeInMilli)
-    let minutes = Math.floor((timeInMilli / 60000) % 60)
-    let seconds = Math.floor((timeInMilli / 1000) % 60)
-    let centiseconds = Math.floor((timeInMilli % 1000) / 10) 
+export const resetTimer = (isNewSession, numOfLaps, timeStamp) => {
+    const time = document.querySelector('.time')
+
+    timeStamp = {
+        startTime: 0, 
+        endTime : 0,
+        currentDuration: 0
+    }
     
-    return `${padNumber(minutes)}:${padNumber(seconds)}.${padNumber(centiseconds)}`
-}
-
-const padNumber = (num) => {
-    return num.toString().padStart(2, 0);
-} 
-*/
-
-export const resetTimer = () => {
-    startTime = undefined
-    endTime = undefined
-    timeElapsed = undefined
+    isNewSession = true
     numOfLaps = 0
-    newSession = true
     time.innerHTML = '00:00.00'
 }
