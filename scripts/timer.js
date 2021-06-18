@@ -1,6 +1,9 @@
 let animationId = 0
 
-export const getTimeStamp = (isWatchRunning, timeStamp) => {
+export const getTimeStamp = (isWatchRunning, globalTimeStamp) => {
+    const timeStamp = {
+        ...globalTimeStamp
+    }
     isWatchRunning ? timeStamp.endTime = Date.now() : timeStamp.startTime = Date.now()
     return timeStamp
 }
@@ -29,16 +32,19 @@ const formatTime = (timeInMilli) => {
     return `${minutes}:${seconds}.${centiseconds}`
 }
 
-export const resetTimer = (isNewSession, numOfLaps, timeStamp) => {
+export const resetTimer = (isNewSession, lapState, timeStamp) => {
     const time = document.querySelector('.time')
 
-    timeStamp = {
-        startTime: 0, 
-        endTime : 0,
-        currentDuration: 0
-    }
+    time.innerHTML = '00:00.00'
+    
+    timeStamp.startTime = 0
+    timeStamp.endTime = 0
+    timeStamp.currentDuration = 0
+
+    lapState.startTime = 0
+    lapState.endTime = 0
+    lapState.currentDuration = 0
+    lapState.numOfLaps = 0
     
     isNewSession = true
-    numOfLaps = 0
-    time.innerHTML = '00:00.00'
 }
