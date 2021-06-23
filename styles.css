@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "SF Pro Light";
+    src: url("./assets/SF-Pro-Text-Light.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "SF Pro Ultralight";
+    src: url("./assets/SF-Pro-Text-Ultralight.otf") format("opentype");
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,43 +15,42 @@
     font-family: 'Roboto', sans-serif;
 }
 
-body {
+#main {
+    width: 366px;
+    height: 792px;
+    margin: 50px auto;
     background-color: #010000;
 }
 
-#main {
-    width: 225px;
-    margin: 0 auto;
-}
-
 .time {
-    margin: 0 auto;
-    font-size: 45px;
+    width: 100%;
+    font-size: 85px;
     color: #fdfdfd;
-    margin-top: 50px;
+    margin-top: 170px;
     text-align: center;
+    display: inline-block;
+    font-weight: 100;
 }
 
-.time p {
-    display: inline-block;
+#controls {
+    padding-top: 95px;
 }
 
 .button {
-    width: 60px;
-    height: 60px;
-    font-size: 15px;
-    margin-top: 25px;
+    width: 75px;
+    height: 75px;
+    font-size: 16px;
     user-select: none;
-    line-height: 57px;
+    line-height: 71px;
     border-radius: 50%;
     text-align: center;
     display: inline-block;
-    border: 1.5px solid black;
+    border: 2px solid black;
 }
 
 .lapResetButton {
     color: #fefefe;
-    margin-left: 10px;
+    margin-left: 15px;
     background-color: rgb(51, 51, 51);
     box-shadow:  0 0 0 2px rgb(51, 51, 51);
 }
@@ -58,7 +67,7 @@ body {
 
 .startStopButton {
     float: right;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 .start {
@@ -109,18 +118,22 @@ body {
     box-shadow:  0 0 0 2px rgb(28,28,30);
 }
 
-.log {
-    height: 151px;
+.logContainer {
+    height: 250px;
     overflow: auto;
-    margin-top: 25px;
+    margin-top: 17px;
+}
+
+.log {
+    width: 93%;
+    margin: 0 auto;
 }
 
 .lapTime {
-    width: 225px;
-    height: 25px;
+    height: 40px;
     color: white;
-    line-height: 25px;
-    border-top: 1px solid rgb(50,50,50);
+    line-height: 40px;
+    border-top: 1px solid rgb(25, 25, 25);
 }
 
 .lapTime span {
@@ -128,9 +141,9 @@ body {
 }
 
 .shortestLap {
-    color: green;
+    color: rgb(103, 203, 101);
 }
 
 .longestLap {
-    color: red;
+    color: rgb(220, 78, 64);
 }
