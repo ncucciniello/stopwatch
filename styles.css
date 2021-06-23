@@ -7,21 +7,19 @@
 
 body {
     background-color: #010000;
-    /* width: 100vw; */
 }
 
 #main {
-    margin: 0 auto;
     width: 225px;
-    /* border: 1px solid blue; */
+    margin: 0 auto;
 }
 
 .time {
-    color: #fdfdfd;
-    font-size: 45px;
     margin: 0 auto;
-    text-align: center;
+    font-size: 45px;
+    color: #fdfdfd;
     margin-top: 50px;
+    text-align: center;
 }
 
 .time p {
@@ -29,27 +27,33 @@ body {
 }
 
 .button {
-    display: inline-block;
-    height: 60px;
     width: 60px;
-    border-radius: 50px;
-    text-align: center;
-    line-height: 60px;
+    height: 60px;
     font-size: 15px;
     margin-top: 25px;
+    user-select: none;
+    line-height: 57px;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
     border: 1.5px solid black;
 }
 
-.button:hover {
-    cursor: pointer;
-    opacity: 70%;  
-}
-
 .lapResetButton {
-    background-color: #333333;
-    box-shadow:  0 0 0 2px #333333;
     color: #fefefe;
     margin-left: 10px;
+    background-color: rgb(51, 51, 51);
+    box-shadow:  0 0 0 2px rgb(51, 51, 51);
+}
+
+.lapResetButton:hover {
+    background-color: rgba(51, 51, 51, .7);
+    box-shadow:  0 0 0 2px rgba(51, 51, 51, .7);
+}
+
+.lapResetButton:active {
+    background-color: rgba(51, 51, 51, .3);
+    box-shadow:  0 0 0 2px rgba(51, 51, 51, .3);
 }
 
 .startStopButton {
@@ -58,38 +62,75 @@ body {
 }
 
 .start {
-    background-color: #132914;
-    box-shadow:  0 0 0 2px #132914;
     color: #69cf69;
+    background-color: rgb(19, 41, 20);
+    box-shadow:  0 0 0 2px rgb(19, 41, 20);
+}
+
+.start:hover {
+    background-color: rgba(19, 41, 20, .7);
+    box-shadow:  0 0 0 2px rgba(19, 41, 20, .7);
+}
+
+.start:active {
+    background-color: rgba(19, 41, 20, .3);
+    box-shadow:  0 0 0 2px rgba(19, 41, 20, .3);
 }
 
 .stop {
-    background-color: #2f100d;
-    box-shadow:  0 0 0 2px #2f100d;
     color: #e65444;
+    background-color: rgb(47, 16, 13);
+    box-shadow:  0 0 0 2px rgb(47, 16, 13);
+}
+
+.stop:hover {
+    background-color: rgba(47, 16, 13, .7);
+    box-shadow:  0 0 0 2px rgba(47, 16, 13, .7);
+}
+
+.stop:active {
+    background-color: rgba(47, 16, 13, .3);
+    box-shadow:  0 0 0 2px rgba(47, 16, 13, .3);
 }
 
 .disabled {
+    color: rgb(154,153,160);
     background-color: rgb(28,28,30);
     box-shadow:  0 0 0 2px rgb(28,28,30);
-    color: rgb(154,153,160);
+}
+
+.disabled:hover {
+    background-color: rgb(28,28,30);
+    box-shadow:  0 0 0 2px rgb(28,28,30);
+}
+
+.disabled:active {
+    background-color: rgb(28,28,30);
+    box-shadow:  0 0 0 2px rgb(28,28,30);
 }
 
 .log {
-    margin-top: 25px;
-    height: 150px;
+    height: 151px;
     overflow: auto;
+    margin-top: 25px;
 }
 
 .lapTime {
     width: 225px;
     height: 25px;
-    line-height: 25px;
     color: white;
-    /* padding: 0 10px 0 10px; */
+    line-height: 25px;
     border-top: 1px solid rgb(50,50,50);
 }
 
 .lapTime span {
     float: right;
+}
+
+.shortestLap {
+    color: green;
+}
+
+.longestLap {
+    color: red;
 }

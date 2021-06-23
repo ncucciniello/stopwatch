@@ -1,50 +1,49 @@
+import { formatTime } from './formatTime.js'
+
 let animationId = 0
 
-export const getTimeStamp = (isWatchRunning, globalTimeStamp) => {
-    const timeStamp = {
-        ...globalTimeStamp
+export const getTimeStamp = (isRunning, globalTimeState) => {
+    const timerState = {
+        ...globalTimeState
     }
-    isWatchRunning ? timeStamp.endTime = Date.now() : timeStamp.startTime = Date.now()
-    return timeStamp
+    isRunning ? timerState.stopTime = Date.now() : timerState.startTime = Date.now()
+    return timerState
 }
 
-export const runTimer = (timeStamp) => {
-    const time = document.querySelector('.time')    
-    let timeElapsed = (Date.now() - timeStamp.startTime) + timeStamp.currentDuration
+export const runTimer = (timerState) => {
+    const time = document.querySelector('.time')
+    const timeElapsed = (Date.now() - timerState.startTime) + timerState.currentDuration
 
     time.innerHTML = formatTime(timeElapsed)
-    animationId = requestAnimationFrame(() => runTimer(timeStamp))
+    animationId = requestAnimationFrame(() => runTimer(timerState))
 }
 
-export const stopTimer = (timeStamp) => {
+export const stopTimer = (globalTimerState) => {
+    const timerState = {
+        ...globalTimerState
+    }
+
     cancelAnimationFrame(animationId)
-    timeStamp.currentDuration = (timeStamp.endTime - timeStamp.startTime) + timeStamp.currentDuration
+    timerState.currentDuration = (timerState.stopTime - timerState.startTime) + timerState.currentDuration
+    // timerState.startPause = Date.now()
+
+    return timerState
 }
 
-const formatTime = (timeInMilli) => {
-    const totalSeconds = timeInMilli / 1000
-    const [minutes, seconds, centiseconds] = [
-        totalSeconds / 60,
-        totalSeconds % 60,
-        (timeInMilli % 1000) / 10
-    ].map((num) => Math.floor(num).toString(10).padStart(2, '0'))
-
-    return `${minutes}:${seconds}.${centiseconds}`
-}
-
-export const resetTimer = (isNewSession, lapState, timeStamp) => {
+export const resetTimer = () => {
     const time = document.querySelector('.time')
-
     time.innerHTML = '00:00.00'
-    
-    timeStamp.startTime = 0
-    timeStamp.endTime = 0
-    timeStamp.currentDuration = 0
 
-    lapState.startTime = 0
-    lapState.endTime = 0
-    lapState.currentDuration = 0
-    lapState.numOfLaps = 0
-    
-    isNewSession = true
+    const newTimerState = {
+        startTime: 0, 
+        stopTime : 0,
+        currentDuration: 0,
+        //startPause: 0,
+        //endPause: 0,
+        pauseDuration: 0
+    }
+
+    // isNewSession = true
+
+    return newTimerState
 }
