@@ -25,7 +25,6 @@ export const stopTimer = (globalTimerState) => {
 
     cancelAnimationFrame(animationId)
     timerState.currentDuration = (timerState.stopTime - timerState.startTime) + timerState.currentDuration
-    // timerState.startPause = Date.now()
 
     return timerState
 }
@@ -38,8 +37,6 @@ export const resetTimer = () => {
         startTime: 0, 
         stopTime : 0,
         currentDuration: 0,
-        //startPause: 0,
-        //endPause: 0,
         pauseDuration: 0
     }
 

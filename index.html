@@ -9,26 +9,27 @@
 </head>
 
 <body>
-  <div id="main">
-    <div class="time">
-      00:00.00
-    </div>
-    <div id="controls">
-      <div class="button lapResetButton lap disabled">Lap</div>
-      <div class="button startStopButton start">Start</div>
-    </div>
-    <div class="logContainer">
-      <div class="log">
-        <div class="lapTime"></div>
-        <div class="lapTime"></div>
-        <div class="lapTime"></div>
-        <div class="lapTime"></div>
-        <div class="lapTime"></div>
-        <div class="lapTime"></div>
-      </div>
-    </div>
-  </div>
+  <main>
 
+    <div class="time">00:00.00</div>
+    
+    <div class="controls">
+      <button class="lapResetButton disabled">Lap</button>
+      <button class="startStopButton start">Start</button>
+    </div>
+
+    <div class="lapListContainer">
+      <ul class="lapList">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    
+  </main>
   <script type="module" src="./scripts/scripts.js"></script>
 </body>
 

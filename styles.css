@@ -8,6 +8,23 @@
     src: url("./assets/SF-Pro-Text-Ultralight.otf") format("opentype");
 }
 
+:root {
+    --lap-rest-button-text-color: rgb(254, 254, 254);
+    --lap-reset-button-color: rgb(51, 51, 51);
+    --lap-reset-button-color-hover: rgba(51, 51, 51, .7);
+    --lap-reset-button-color-active: rgba(51, 51, 51, .3);
+    
+    --start-button-text-color: rgb(105, 207, 105);
+    --start-button-color: rgb(19, 41, 20);
+    --start-button-color-hover: rgba(19, 41, 20, .7);
+    --start-button-color-active: rgba(19, 41, 20, .3);
+    
+    --stop-button-text-color: rgb(230, 84, 68);
+    --stop-button-color: rgb(47, 16, 13);
+    --stop-button-color-hover: rgba(47, 16, 13, .7);
+    --stop-button-color-active: rgba(47, 16, 13, .3);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -15,91 +32,89 @@
     font-family: 'Roboto', sans-serif;
 }
 
-#main {
+main {
     width: 366px;
     height: 792px;
-    margin: 50px auto;
+    margin: 80px auto;
     background-color: #010000;
 }
 
 .time {
     width: 100%;
     font-size: 85px;
+    font-weight: 100;
     color: #fdfdfd;
     margin-top: 170px;
     text-align: center;
     display: inline-block;
-    font-weight: 100;
 }
 
-#controls {
-    padding-top: 95px;
+.controls {
+    margin-top: 95px;
 }
 
-.button {
+.controls button {
     width: 75px;
     height: 75px;
     font-size: 16px;
-    user-select: none;
     line-height: 71px;
     border-radius: 50%;
     text-align: center;
-    display: inline-block;
     border: 2px solid black;
 }
 
 .lapResetButton {
-    color: #fefefe;
-    margin-left: 15px;
-    background-color: rgb(51, 51, 51);
-    box-shadow:  0 0 0 2px rgb(51, 51, 51);
+    margin-left: 17px;
+    color: var(--lap-rest-button-text-color);
+    background-color: var(--lap-reset-button-color);
+    box-shadow:  0 0 0 2px var(--lap-reset-button-color);
 }
 
 .lapResetButton:hover {
-    background-color: rgba(51, 51, 51, .7);
-    box-shadow:  0 0 0 2px rgba(51, 51, 51, .7);
+    background-color: var(--lap-reset-button-color-hover);
+    box-shadow:  0 0 0 2px var(--lap-reset-button-color-hover);
 }
 
 .lapResetButton:active {
-    background-color: rgba(51, 51, 51, .3);
-    box-shadow:  0 0 0 2px rgba(51, 51, 51, .3);
+    background-color: var(--lap-reset-button-color-active);
+    box-shadow:  0 0 0 2px var(--lap-reset-button-color-active);
 }
 
 .startStopButton {
     float: right;
-    margin-right: 15px;
+    margin-right: 17px;
 }
 
 .start {
-    color: #69cf69;
-    background-color: rgb(19, 41, 20);
-    box-shadow:  0 0 0 2px rgb(19, 41, 20);
+    color: var(--start-button-text-color);
+    background-color: var(--start-button-color);
+    box-shadow:  0 0 0 2px var(--start-button-color);
 }
 
 .start:hover {
-    background-color: rgba(19, 41, 20, .7);
-    box-shadow:  0 0 0 2px rgba(19, 41, 20, .7);
+    background-color: var(--start-button-color-hover);
+    box-shadow:  0 0 0 2px var(--start-button-color-hover);
 }
 
 .start:active {
-    background-color: rgba(19, 41, 20, .3);
-    box-shadow:  0 0 0 2px rgba(19, 41, 20, .3);
+    background-color: var(--start-button-color-active);
+    box-shadow:  0 0 0 2px var(--start-button-color-active);
 }
 
 .stop {
-    color: #e65444;
-    background-color: rgb(47, 16, 13);
-    box-shadow:  0 0 0 2px rgb(47, 16, 13);
+    color: var(--stop-button-text-color);
+    background-color: var(--stop-button-color);
+    box-shadow:  0 0 0 2px var(--stop-button-color);
 }
 
 .stop:hover {
-    background-color: rgba(47, 16, 13, .7);
-    box-shadow:  0 0 0 2px rgba(47, 16, 13, .7);
+    background-color: var(--stop-button-color-hover);
+    box-shadow:  0 0 0 2px var(--stop-button-color-hover);
 }
 
 .stop:active {
-    background-color: rgba(47, 16, 13, .3);
-    box-shadow:  0 0 0 2px rgba(47, 16, 13, .3);
+    background-color: var(--stop-button-color-active);
+    box-shadow:  0 0 0 2px var(--stop-button-color-active);
 }
 
 .disabled {
@@ -118,25 +133,25 @@
     box-shadow:  0 0 0 2px rgb(28,28,30);
 }
 
-.logContainer {
+.lapListContainer {
     height: 250px;
     overflow: auto;
     margin-top: 17px;
 }
 
-.log {
+.lapList {
     width: 93%;
     margin: 0 auto;
+    color: #fdfdfd;
 }
 
-.lapTime {
-    height: 40px;
-    color: white;
+.lapList li {
+    height: 41px;
     line-height: 40px;
     border-top: 1px solid rgb(25, 25, 25);
 }
 
-.lapTime span {
+li span {
     float: right;
 }
 

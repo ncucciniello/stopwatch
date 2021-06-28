@@ -43,11 +43,6 @@ const handleStartStopButton = () => {
         changeButtonToStart()
         timerState = stopTimer(timerState)
     }
-    // ------------ Debugging -----------
-        // console.log('in handleStartStopButton')
-        //     console.log('\t timerState', timerState)
-        //     console.log('\t pausetime', formatTime(timerState.pauseDuration))
-    // ----------- END DEBUGGING --------
 }
 
 const handleLapResetButton = () => {
@@ -60,31 +55,23 @@ const handleLapResetButton = () => {
         timerState = resetTimer()
         isNewSession = true
         resetLapLog()
-        resetLapState()
+        lapstate = resetLapState()
     }
 }
 
 const getCurrentLapTime = () => {
     lapState.endTime = Date.now()
-    // ------------ Debugging -----------
-        // console.log('in getCurrentLapTime')
-        //     console.log('\t lap startTime =', lapState.startTime)
-        //     console.log('\t lap endTime =', lapState.endTime)
-        //     console.log('\t lap duration =', formatTime(lapState.endTime - lapState.startTime))
-        //     console.log('\t pause duration =', formatTime(timerState.pauseDuration))
-    // ----------- END DEBUGGING --------
     lapState.currentLapDuration = (lapState.endTime - lapState.startTime) - timerState.pauseDuration
     lapState.startTime = lapState.endTime
     timerState.pauseDuration = 0
 }
 
 const addLap = () => {
-    const lapLog = document.querySelector('.log')
-    const lapElement = document.createElement('div')
+    const lapList = document.querySelector('.lapList')
+    const lapListItem = document.createElement('li')
     const formattedLapTime = formatTime(lapState.currentLapDuration)
 
-    lapElement.setAttribute('class', 'lapTime')
-    lapElement.innerHTML = `Lap ${lapState.numOfLaps + 1} <span>${formattedLapTime}</span> `
+    lapListItem.innerHTML = `Lap ${lapState.numOfLaps + 1} <span>${formattedLapTime}</span> `
 
     if (lapState.currentLapDuration < lapState.shortestLap) {
         let prevShortest = document.querySelectorAll('.shortestLap')
@@ -93,7 +80,7 @@ const addLap = () => {
         }
 
         lapState.shortestLap = lapState.currentLapDuration
-        lapElement.className += ' shortestLap'
+        lapListItem.className += ' shortestLap'
     }
 
     if (lapState.currentLapDuration > lapState.longestLap) {
@@ -103,15 +90,15 @@ const addLap = () => {
         }
 
         lapState.longestLap = lapState.currentLapDuration
-        lapElement.className += ' longestLap'
+        lapListItem.className += ' longestLap'
     }
 
     if (lapState.numOfLaps < 6 ) {
-        lapLog.removeChild(lapLog.lastElementChild);
-        lapLog.prepend(lapElement)
+        lapList.removeChild(lapList.lastElementChild);
+        lapList.prepend(lapListItem)
     }
     else {
-        lapLog.prepend(lapElement)
+        lapList.prepend(lapListItem)
     }
 }
 
@@ -120,25 +107,26 @@ const resetLapState = () => {
     lapResetButton.innerHTML = 'Lap'
     lapResetButton.className += ' disabled'
 
-    lapState.startTime = 0
-    lapState.endTime = 0
-    lapState.currentDuration = 0
-    lapState.numOfLaps = 0
-    lapState.longestLap = 0
-    lapState.shortestLap = 9999999
+    newLapState = {
+        startTime: 0,
+        endTime: 0,
+        currentLapDuration: 0,
+        numOfLaps: 0,
+        longestLap: 0,
+        shortestLap: 9999999
+    }
+
+    return newLapState
 }
 
 const resetLapLog = () => {
-    const lapLog = document.querySelector('.log')
-    const lapElement = document.createElement('div')
-    lapElement.setAttribute('class', 'lapTime')
+    const lapList = document.querySelector('.lapList')
+    const lapListItem = document.createElement('li')
 
-    while (lapLog.firstChild) {
-        lapLog.removeChild(lapLog.firstChild);
-    }
+    lapList.innerHTML = ""
 
     for (let i = 0; i < 6; i++) {
-        lapLog.appendChild(lapElement.cloneNode(true))
+        lapList.appendChild(lapListItem.cloneNode(true))
     }
 }
 
