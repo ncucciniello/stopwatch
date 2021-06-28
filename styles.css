@@ -23,6 +23,9 @@
     --stop-button-color: rgb(47, 16, 13);
     --stop-button-color-hover: rgba(47, 16, 13, .7);
     --stop-button-color-active: rgba(47, 16, 13, .3);
+
+    --longest-lap-color: rgb(230, 84, 68);
+    --shortest-lap-color: rgb(103, 203, 101);
 }
 
 * {
@@ -43,7 +46,7 @@ main {
     width: 100%;
     font-size: 85px;
     font-weight: 100;
-    color: #fdfdfd;
+    color: rgb(253, 253, 253);
     margin-top: 170px;
     text-align: center;
     display: inline-block;
@@ -53,7 +56,7 @@ main {
     margin-top: 95px;
 }
 
-.controls button {
+button {
     width: 75px;
     height: 75px;
     font-size: 16px;
@@ -61,6 +64,22 @@ main {
     border-radius: 50%;
     text-align: center;
     border: 2px solid black;
+}
+
+button:disabled {
+    color: rgb(154,153,160);
+    background-color: rgb(28,28,30);
+    box-shadow:  0 0 0 2px rgb(28,28,30);
+}
+
+button:disabled:hover {
+    background-color: rgb(28,28,30);
+    box-shadow:  0 0 0 2px rgb(28,28,30);
+}
+
+button:disabled:active {
+    background-color: rgb(28,28,30);
+    box-shadow:  0 0 0 2px rgb(28,28,30);
 }
 
 .lapResetButton {
@@ -117,21 +136,6 @@ main {
     box-shadow:  0 0 0 2px var(--stop-button-color-active);
 }
 
-.disabled {
-    color: rgb(154,153,160);
-    background-color: rgb(28,28,30);
-    box-shadow:  0 0 0 2px rgb(28,28,30);
-}
-
-.disabled:hover {
-    background-color: rgb(28,28,30);
-    box-shadow:  0 0 0 2px rgb(28,28,30);
-}
-
-.disabled:active {
-    background-color: rgb(28,28,30);
-    box-shadow:  0 0 0 2px rgb(28,28,30);
-}
 
 .lapListContainer {
     height: 250px;
@@ -142,7 +146,7 @@ main {
 .lapList {
     width: 93%;
     margin: 0 auto;
-    color: #fdfdfd;
+    color: rgb(253, 253, 253);
 }
 
 .lapList li {
@@ -156,9 +160,9 @@ li span {
 }
 
 .shortestLap {
-    color: rgb(103, 203, 101);
+    color: var(--shortest-lap-color);
 }
 
 .longestLap {
-    color: rgb(220, 78, 64);
+    color: var(--longest-lap-color);
 }

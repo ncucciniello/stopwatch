@@ -40,7 +40,5 @@ export const resetTimer = () => {
         pauseDuration: 0
     }
 
-    // isNewSession = true
-
     return newTimerState
 }
