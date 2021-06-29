@@ -19,30 +19,30 @@ export const getCurrentLapTime = (lapState, timerState) => {
 }
 
 export const addLap = (lapState) => {
-    const lapList = document.querySelector('.lapList')
+    const lapList = document.querySelector('.lap-list')
     const lapListItem = document.createElement('li')
     const formattedLapTime = formatTime(lapState.currentLapDuration)
 
     lapListItem.innerHTML = `Lap ${lapState.numOfLaps + 1} <span>${formattedLapTime}</span> `
 
     if (lapState.currentLapDuration < lapState.shortestLap) {
-        const prevShortest = document.querySelector('.shortestLap')
+        const prevShortest = document.querySelector('.shortest-lap')
         if (prevShortest != null) {
-            prevShortest.classList.remove('shortestLap')
+            prevShortest.classList.remove('shortest-lap')
         }
 
         lapState.shortestLap = lapState.currentLapDuration
-        lapListItem.className += ' shortestLap'
+        lapListItem.className += ' shortest-lap'
     }
 
     if (lapState.currentLapDuration > lapState.longestLap) {
-        const prevLongest = document.querySelector('.longestLap')
+        const prevLongest = document.querySelector('.longest-lap')
         if (prevLongest != null) {
-            prevLongest.classList.remove('longestLap')
+            prevLongest.classList.remove('longest-lap')
         }
 
         lapState.longestLap = lapState.currentLapDuration
-        lapListItem.className += ' longestLap'
+        lapListItem.className += ' longest-lap'
     }
 
     if (lapState.numOfLaps < 6 ) {
@@ -67,7 +67,7 @@ export const resetLapState = () => {
 }
 
 export const resetLapList = () => {
-    const lapList = document.querySelector('.lapList')
+    const lapList = document.querySelector('.lap-list')
     const lapListItem = document.createElement('li')
 
     lapList.innerHTML = ""

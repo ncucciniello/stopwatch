@@ -1,8 +1,8 @@
 import { getTimeStamp, runTimer, stopTimer, resetTimer } from './timer.js'
 import { getCurrentLapTime, addLap, resetLapState, resetLapList } from './laps.js'
 
-const lapResetButton = document.querySelector('.lapResetButton')
-const startStopButton = document.querySelector('.startStopButton')
+const lapResetButton = document.querySelector('.lap-reset-button')
+const startStopButton = document.querySelector('.start-stop-button')
 
 const START_TEXT = 'Start'
 const STOP_TEXT = 'Stop'
@@ -38,14 +38,14 @@ const handleStartStopButton = () => {
             isNewSession = false
         }
         runTimer(timerState)
-        changeButtonsToStopState()
+        changeToRunningState()
 
         if (timerState.stopTime > 0) {
             timerState.pauseDuration = Date.now() - timerState.stopTime
         }
     }
     else {
-        changeButtonsToStartState()
+        changeToStoppedState()
         timerState = stopTimer(timerState)
     }
 }
@@ -65,14 +65,14 @@ const handleLapResetButton = () => {
     }
 }
 
-const changeButtonsToStopState = () => {
+const changeToRunningState = () => {
     isRunning = true
     startStopButton.classList.replace('start', 'stop')
     startStopButton.innerHTML = STOP_TEXT
     lapResetButton.innerHTML = LAP_TEXT
 }
 
-const changeButtonsToStartState = () => {
+const changeToStoppedState = () => {
     isRunning = false
     startStopButton.classList.replace('stop', 'start')
     startStopButton.innerHTML = START_TEXT
@@ -80,7 +80,7 @@ const changeButtonsToStartState = () => {
 }
 
 const resetLapResetButton = () => {
-    const lapResetButton = document.querySelector('.lapResetButton')
+    const lapResetButton = document.querySelector('.lap-reset-button')
     lapResetButton.innerHTML = LAP_TEXT
     lapResetButton.disabled = true
 }

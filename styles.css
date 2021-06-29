@@ -82,24 +82,24 @@ button:disabled:active {
     box-shadow:  0 0 0 2px rgb(28,28,30);
 }
 
-.lapResetButton {
+.lap-reset-button {
     margin-left: 17px;
     color: var(--lap-rest-button-text-color);
     background-color: var(--lap-reset-button-color);
     box-shadow:  0 0 0 2px var(--lap-reset-button-color);
 }
 
-.lapResetButton:hover {
+.lap-reset-button:hover {
     background-color: var(--lap-reset-button-color-hover);
     box-shadow:  0 0 0 2px var(--lap-reset-button-color-hover);
 }
 
-.lapResetButton:active {
+.lap-reset-button:active {
     background-color: var(--lap-reset-button-color-active);
     box-shadow:  0 0 0 2px var(--lap-reset-button-color-active);
 }
 
-.startStopButton {
+.start-stop-button {
     float: right;
     margin-right: 17px;
 }
@@ -137,19 +137,19 @@ button:disabled:active {
 }
 
 
-.lapListContainer {
+.lap-list-container {
     height: 250px;
     overflow: auto;
     margin-top: 17px;
 }
 
-.lapList {
+.lap-list {
     width: 93%;
     margin: 0 auto;
     color: rgb(253, 253, 253);
 }
 
-.lapList li {
+.lap-list li {
     height: 41px;
     line-height: 40px;
     border-top: 1px solid rgb(25, 25, 25);
@@ -159,10 +159,10 @@ li span {
     float: right;
 }
 
-.shortestLap {
+.shortest-lap {
     color: var(--shortest-lap-color);
 }
 
-.longestLap {
+.longest-lap {
     color: var(--longest-lap-color);
 }
